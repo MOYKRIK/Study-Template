@@ -11,6 +11,7 @@ public sealed class MonitorService : IPrimeCounter
 {
     private readonly object _lock = new();
 
+    /// <inheritdoc/>
     public PrimeCountResultDto CountPrimes(int start, int end, int threadCount)
     {
         int total = 0;
@@ -62,8 +63,14 @@ public sealed class MonitorService : IPrimeCounter
         };
     }
 
-    public string GetVersionName() => "Monitor (lock)";
+    ///<inheritdoc/>
 
+    public string GetVersionName() => "Monitor (lock)";
+    /// <summary>
+    /// Проверка числа на простоту.
+    /// </summary>
+    /// <param name="number"></param>
+    /// <returns></returns>
     private static bool IsPrime(int number)
     {
         if (number < 2) return false;

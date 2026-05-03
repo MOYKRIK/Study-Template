@@ -7,12 +7,17 @@ public sealed class MutexServiceTests
 {
     private IPrimeCounter _service;
 
+    /// <summary>
+    /// Используем Mutex-реализацию (межпроцессная синхронизация)
+    /// </summary>
     [SetUp]
     public void Setup()
     {
         _service = new MutexService();
     }
-
+    /// <summary>
+    /// Проверка базовой корректности алгоритма
+    /// </summary>
     [Test]
     public void CountPrimes_CorrectTotal()
     {
@@ -20,7 +25,9 @@ public sealed class MutexServiceTests
 
         Assert.That(result.PrimeCount, Is.EqualTo(25));
     }
-
+    /// <summary>
+    /// Многократный запуск должен давать одинаковый результат
+    /// </summary>
     [Test]
     public void CountPrimes_ConsistentResults()
     {
@@ -29,7 +36,9 @@ public sealed class MutexServiceTests
 
         Assert.That(r1.PrimeCount, Is.EqualTo(r2.PrimeCount));
     }
-
+    /// <summary>
+    /// Проверка, что Mutex не приводит к зависанию
+    /// </summary>
     [Test]
     public void CountPrimes_DoesNotDeadlock()
     {

@@ -11,6 +11,8 @@ public sealed class MutexService : IPrimeCounter
 {
     private readonly Mutex _mutex = new();
 
+    /// <inheritdoc/>
+
     public PrimeCountResultDto CountPrimes(int start, int end, int threadCount)
     {
         int total = 0;
@@ -67,8 +69,14 @@ public sealed class MutexService : IPrimeCounter
         };
     }
 
-    public string GetVersionName() => "Mutex";
+    /// <inheritdoc/>
 
+    public string GetVersionName() => "Mutex";
+    /// <summary>
+    /// Проверка числа на простоту.
+    /// </summary>
+    /// <param name="number"></param>
+    /// <returns></returns>
     private static bool IsPrime(int number)
     {
         if (number < 2) return false;

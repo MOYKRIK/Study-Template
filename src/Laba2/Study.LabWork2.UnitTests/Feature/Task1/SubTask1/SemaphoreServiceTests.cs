@@ -7,13 +7,17 @@ namespace Study.LabWork2.UnitTests.Feature.Task1.SubTask1;
 public sealed class SemaphoreServiceTests
 {
     private IPrimeCounter _service;
-
+    /// <summary>
+    /// Semaphore ограничивает параллелизм потоков (3 одновременно)
+    /// </summary>
     [SetUp]
     public void Setup()
     {
         _service = new SemaphoreService();
     }
-
+    /// <summary>
+    /// Проверка корректности логики при ограниченной конкуренции потоков
+    /// </summary>
     [Test]
     public void CountPrimes_CorrectResult()
     {
@@ -21,7 +25,9 @@ public sealed class SemaphoreServiceTests
 
         Assert.That(result.PrimeCount, Is.EqualTo(25));
     }
-
+    /// <summary>
+    /// Проверка на эталонном диапазоне задачи
+    /// </summary>
     [Test]
     public void CountPrimes_ThreadLimitDoesNotBreakLogic()
     {
@@ -29,7 +35,9 @@ public sealed class SemaphoreServiceTests
 
         Assert.That(result.PrimeCount, Is.EqualTo(1229));
     }
-
+    /// <summary>
+    /// Проверка стабильности результата при повторных запусках
+    /// </summary>
     [Test]
     public void CountPrimes_RepeatedRunsStable()
     {

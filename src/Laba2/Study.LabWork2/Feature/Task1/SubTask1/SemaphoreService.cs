@@ -10,7 +10,13 @@ namespace Study.LabWork2.Feature.Task1.SubTask1;
 public sealed class SemaphoreService : IPrimeCounter
 {
     private readonly Semaphore _semaphore = new Semaphore(3, 3);
-
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="threadCount"></param>
+    /// <returns></returns>
     public PrimeCountResultDto CountPrimes(int start, int end, int threadCount)
     {
         int total = 0;
@@ -71,9 +77,16 @@ public sealed class SemaphoreService : IPrimeCounter
             FoundPrimes = primes
         };
     }
-
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <returns></returns>
     public string GetVersionName() => "Semaphore";
-
+    /// <summary>
+    /// Проверка числа на простоту.
+    /// </summary>
+    /// <param name="number"></param>
+    /// <returns></returns>
     private static bool IsPrime(int number)
     {
         if (number < 2) return false;

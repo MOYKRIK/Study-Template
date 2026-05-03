@@ -6,6 +6,9 @@ namespace Study.LabWork2;
 
 public static class Program
 {
+    /// <summary>
+    /// Запускает сравнение трех версий подсчета простых чисел с разными механизмами синхронизации.
+    /// </summary>
     public static void Main()
     {
         int start = 1;
