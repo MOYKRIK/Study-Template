@@ -1,0 +1,6 @@
+@Lab3CrudAPI_HostAddress = http://localhost:5236
+
+GET {{Lab3CrudAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
